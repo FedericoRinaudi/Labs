@@ -13,6 +13,11 @@ fn main(){
     println!("\n\n");
     let b: Vec<String> = annotate(prova);
     print_string_vec(b);
+    let prova2: String = "*.....*...*...*.".to_string();
+    let row:usize = 4;
+    let col:usize = 4;
+    println!("\n\n{}", annotate2(prova2, row, col));
+
 }
 
 fn print_matrix (m: &[&str]) {
