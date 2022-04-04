@@ -19,8 +19,6 @@ pub fn annotate(minefield: &[&str]) -> Vec<String> {
 
                     let mut count: u8 = 0;
 
-                    //perché per iterare ho una ref di una ref??
-
                     for r in &minefield[start_x..end_x+1] {
                         for c_to_check in &r.as_bytes()[start_y..end_y+1] {
                             match c_to_check {
@@ -39,7 +37,7 @@ pub fn annotate(minefield: &[&str]) -> Vec<String> {
                     new_row.push_str(&*count.to_string());*/
                     match count {
                         0 => {new_row.push_str(".")}
-                        _ => {new_row.push_str(&*count.to_string())}
+                        _ => {new_row.push_str(&count.to_string())}
                     }
                 }
                 b'*' => {
@@ -90,7 +88,7 @@ pub fn annotate2(minefield: String, rows: usize, cols: usize) -> String {
 
                 match count {
                     0 => {res.push_str(".")}
-                    _ => {res.push_str(&*count.to_string())}
+                    _ => {res.push_str(&count.to_string())}
                 }
 
             }
