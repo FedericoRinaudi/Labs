@@ -1,7 +1,8 @@
 use std::cmp;
 
-pub fn find<A: AsRef<[T]> , T:Ord>(array: A, key: T) -> Option<usize>{
+pub fn find<A: AsRef<[T]> , T:Ord + std::fmt::Debug>(array: A, key: T) -> Option<usize>{
     let array = array.as_ref();
+
     if array.len() == 0 || key < array[0] || key > array[array.len() - 1] {
         return None;
     }
