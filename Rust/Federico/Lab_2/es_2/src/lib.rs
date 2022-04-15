@@ -3,7 +3,6 @@
 use std::fmt;
 use std::fmt::Formatter;
 
-
 #[derive(Debug, Eq, PartialEq)]
 pub struct Clock{
     minutes: i32,
@@ -34,4 +33,39 @@ impl fmt::Display for Clock {
     }
 }
 
+impl std::ops::Add<i32> for Clock{
+    type Output = Self;
+
+    fn add(self, rhs: i32) -> Self::Output {
+        self.add_minutes(rhs)
+    }
+
+}
+
+impl std::ops::Add<Self> for Clock{
+    type Output = Self;
+
+    fn add(self, rhs: Self) -> Self::Output {
+        self.add_minutes(rhs.minutes)
+    }
+
+}
+
+impl std::ops::Sub<i32> for Clock{
+    type Output = Self;
+
+    fn sub(self, rhs: i32) -> Self::Output {
+        self.add_minutes(-rhs)
+    }
+
+}
+
+impl std::ops::Sub<Self> for Clock{
+    type Output = Self;
+
+    fn sub(self, rhs: Self) -> Self::Output {
+        self.add_minutes(-rhs.minutes)
+    }
+
+}
 

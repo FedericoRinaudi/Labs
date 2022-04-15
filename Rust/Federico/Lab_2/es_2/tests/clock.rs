@@ -95,7 +95,6 @@ fn test_negative_sixty_minutes_is_prev_hour() {
 }
 
 #[test]
-#[ignore]
 fn test_negative_one_twenty_minutes_is_two_prev_hours() {
     assert_eq!(Clock::new(1, -120).to_string(), "23:00");
 }
@@ -168,6 +167,18 @@ fn test_add_more_than_two_days() {
 }
 
 #[test]
+fn test_add_more_than_two_days_2() {
+    let clock = Clock::new(1, 1) + 3500;
+    assert_eq!(clock.to_string(), "11:21");
+}
+
+#[test]
+fn test_add_more_than_two_days_3() {
+    let clock = Clock::new(1, 1) + Clock::new(0, 3500);
+    assert_eq!(clock.to_string(), "11:21");
+}
+
+#[test]
 fn test_subtract_minutes() {
     let clock = Clock::new(10, 3).add_minutes(-3);
     assert_eq!(clock.to_string(), "10:00");
@@ -212,6 +223,19 @@ fn test_subtract_more_than_one_day() {
 #[test]
 fn test_subtract_more_than_two_days() {
     let clock = Clock::new(2, 20).add_minutes(-3000);
+    assert_eq!(clock.to_string(), "00:20");
+}
+
+
+#[test]
+fn test_subtract_more_than_two_days_2() {
+    let clock = Clock::new(2, 20)-3000;
+    assert_eq!(clock.to_string(), "00:20");
+}
+
+#[test]
+fn test_subtract_more_than_two_days_3() {
+    let clock = Clock::new(2, 20)-Clock::new(0, 3000);
     assert_eq!(clock.to_string(), "00:20");
 }
 
